@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 22-feb-2015 0:18:35 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+
+    <class name="app.modelo.Escuderia" table="ejemplo3_escuderias">
+        <id name="id" column="ID_ESCUDERIA" type="java.lang.Long">
+            <generator class="native" />
+        </id>
+
+        <property name="nombre" column="NOMBRE" type="java.lang.String" />
+        <property name="pais" column="PAIS" type="java.lang.String" />
+        
+        <set name="pilotos" inverse="true">
+            <key column="ID_ESCUDERIA"/>
+            <one-to-many class="app.modelo.Piloto"/>
+        </set>
+        
+    </class>
+
+</hibernate-mapping>

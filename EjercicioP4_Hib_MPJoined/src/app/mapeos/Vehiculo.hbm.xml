@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 08-mar-2015 14:40:42 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="app.modelo.Vehiculo" table="ejemplo4_vehiculos">
+        <id name="id" column="ID_VEHICULO" type="java.lang.Long">
+            <generator class="native" />
+        </id>
+        
+        <property name="modelo" column="MODELO" type="java.lang.String" access="field" />
+        
+        <property name="velocidad" column="VELOCIDAD" type="float" access="field" />
+        
+        <property name="potencia" column="POTENCIA" type="int" access="field" />
+        
+        <joined-subclass name="app.modelo.Camion" extends="app.modelo.Vehiculo"
+        table="ejemplo4_camiones">
+        	<key column="CAMION_ID" />
+        	<property name="tara" column="TARA" type="int" />
+        	<property name="pma" column="PMA" type="int" />
+        </joined-subclass>
+        
+        <joined-subclass name="app.modelo.Coche" extends="app.modelo.Vehiculo"
+        table="ejemplo4_coches">
+        	<key column="COCHE_ID" />
+        	<property name="puertas" column="PUERTAS" type="int" />
+        	<property name="longitud" column="LONGITUD" type="float" />
+        </joined-subclass>
+        
+    </class>
+</hibernate-mapping>

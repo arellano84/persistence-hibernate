@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 22-feb-2015 0:18:35 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="app.modelo.Piloto" table="ejemplo3_pilotos">
+
+        <id name="id" column="ID_PILOTO" type="java.lang.Long">
+            <generator class="native" />
+        </id>
+
+        <property name="nombre" column="NOMBRE" type="java.lang.String" />
+        <property name="edad" column="EDAD" type="int" />
+
+        <many-to-one name="nif" column="ID_NIF" class="app.modelo.Nif"
+                     unique="true" not-null="true" cascade="all" />
+
+        <many-to-one name="facturacion" class="app.modelo.Facturacion"
+                     column="ID_FACTURACION"
+                     unique="true"
+                     not-null="true"
+                     cascade="all"/>
+
+        <many-to-one name="escuderia" class="app.modelo.Escuderia"
+                     column="ID_ESCUDERIA"
+                     not-null="true"
+                     cascade="persist,refresh,save-update,merge"/>
+
+        <set name="telefonos" cascade="all" inverse="true">
+            <key column="ID_PILOTO"/>
+            <one-to-many class="app.modelo.Telefono"/>
+        </set>
+
+        <set name="temporadas" table="ejemplo3_pilotos_temporadas"
+                    cascade="persist,refresh,save-update,merge">
+            <key column="ID_PILOTO"/>
+            <many-to-many column="ID_TEMPORADA"
+                          class="app.modelo.Temporada"/>
+        </set>
+
+    </class>
+
+  
+
+</hibernate-mapping>

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 15-feb-2015 22:54:48 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="app.modelo.Libro" table="LIBRO">
+    
+        <composite-id name="libropk" class="app.modelo.LibroPK">
+        	<key-property name="titulo" column="TITULO" type="string" />
+        	<key-property name="autor" column="AUTOR" type="string" />
+        </composite-id>
+        
+        <property name="descripcion" type="java.lang.String" length="100" not-null="false" lazy="false">
+            <column name="DESCRIPCION" />
+        </property>
+        
+        <property name="resumen" type="java.lang.String" length="100" not-null="false" lazy="false">
+            <column name="RESUMEN" />
+        </property>
+        
+    </class>
+</hibernate-mapping>

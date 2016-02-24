@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 22-feb-2015 0:18:35 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+
+    <class name="app.modelo.Facturacion" table="ejemplo3_facturaciones">
+
+        <id name="id" column="ID_FACTURACION" type="java.lang.Long">
+            <generator class="native" />
+        </id>
+
+        <property name="sueldo" column="SUELDO" type="int" />
+        <property name="publicidad" column="PUBLICIDAD" type="int" />
+
+        <one-to-one name="piloto" class="app.modelo.Piloto"
+                    property-ref="facturacion"/>
+    </class>
+
+</hibernate-mapping>

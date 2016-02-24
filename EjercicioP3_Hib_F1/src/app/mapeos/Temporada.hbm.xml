@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 22-feb-2015 0:18:35 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+
+    <class name="app.modelo.Temporada" table="ejemplo3_temporadas">
+
+        <id name="id" column="ID_TEMPORADA" type="java.lang.Long">
+            <generator class="native" />
+        </id>
+
+        <property name="inicio" column="INICIO" type="int" />
+        <property name="fin"  column="FIN" type="int" />
+
+        <set name="pilotos" inverse="true" table="ejemplo3_pilotos_temporadas"
+                 cascade="persist,refresh,save-update,merge">
+            <key column="ID_TEMPORADA"/>
+            <many-to-many column="ID_PILOTO"
+                          class="app.modelo.Piloto"/>
+        </set>
+
+    </class>
+
+</hibernate-mapping>
